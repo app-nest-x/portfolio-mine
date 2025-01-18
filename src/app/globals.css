@@ -1,0 +1,283 @@
+/* purgecss start ignore */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-primary antialiased;
+  }
+}
+
+@layer components {
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+  }
+
+  .slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .modern-card {
+    @apply bg-white-500 rounded-xl shadow-lg p-6 transition-all duration-300;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .modern-card:hover {
+    transform: translateY(-5px);
+    @apply shadow-xl;
+  }
+
+  .modern-button {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 bg-green-main text-white-500;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .modern-button:hover {
+    @apply bg-green-500;
+    transform: translateY(-2px);
+    @apply shadow-green-md;
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-black-500 transition-all duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-green-main transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .project-wrapper {
+    @apply grid gap-6 p-4;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .project-card {
+    @apply bg-white-500 rounded-xl shadow-lg overflow-hidden transition-all duration-300;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    @apply shadow-xl;
+  }
+
+  .loading-spinner {
+    @apply w-8 h-8 border-4 border-green-main rounded-full;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+  }
+
+  .glass {
+    @apply bg-background/20 backdrop-blur-lg border border-border/50;
+  }
+
+  .button {
+    @apply px-6 py-3 rounded-full transition-all duration-300 hover:scale-105;
+  }
+
+  .button-primary {
+    @apply button bg-foreground text-background hover:bg-foreground/90;
+  }
+
+  .button-secondary {
+    @apply button bg-background border border-border hover:border-foreground;
+  }
+
+  .heading {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .subheading {
+    @apply text-xl md:text-2xl text-foreground-secondary;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .text-edge-outline {
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground-muted;
+  }
+
+  .noise {
+    @apply pointer-events-none fixed inset-0 z-50 opacity-10;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 2000 2000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom styles that don't fit into Tailwind's utility classes */
+.MuiTimelineItem-missingOppositeContent:before {
+  display: none;
+}
+
+.MuiTimelineConnector-root {
+  background-color: rgba(47, 171, 115, 1) !important;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  @apply w-1.5;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-border-secondary;
+}
+
+*:focus-visible {
+  @apply outline-none ring-2 ring-foreground ring-offset-2 ring-offset-background;
+}
+
+.project-wrapper{
+  display: flex;
+  list-style: none;
+  height: 350px;
+  overflow-x: scroll;
+  padding: 20px 0;
+  flex: 0 0 600px;
+}
+
+.project-wrapper li {
+  flex: 0 0 300px;
+  margin: 0 20px 0 0;
+}
+
+.project-wrapper li:last-of-type {
+  margin: 0;
+}
+
+.bg {
+  stroke: #fff;
+  opacity: 0.3;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: #fff3;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+  background: green;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: #fff3;
+}
+
+#progress {
+
+  transform: rotate(-90deg);
+}
+
+circle {
+  stroke-dashoffset: 0;
+  stroke-width: 15%;
+  fill: none;
+}
+
+.bg {
+  stroke: blue;
+  opacity: 0.3;
+}
+
+#progress .indicator {
+  stroke: red;
+}
+
+.MuiTimelineItem-root::before{
+  flex: 0 !important;
+}
+
+.MuiTimelineDot-root{
+  background-color: rgba(47, 171, 115, 1) !important;
+}
+
+.MuiTimelineConnector-root{
+  background-color: rgba(47, 171, 115, 1) !important;
+}
+
+/* purgecss end ignore */
